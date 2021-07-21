@@ -1,12 +1,19 @@
 from flask import Flask, render_template
 
-import datetime
+from datetime import date
 
 app = Flask(__name__)
 
 @app.route("/")
 def  index():
-        return render_template("index.html")
+    current = date.today()
+    return render_template("index.html", date=current)
+
+@app.route("/v2")
+def  v2():
+    current = date.today()
+    return "Hello World!" + str(current)
+
 
 #@app.route('/')
 #def example():
